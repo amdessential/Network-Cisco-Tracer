@@ -1,0 +1,183 @@
+-	Config Router Kemanggisan
+Router>ena
+Router#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#inter se 2/0
+Router(config-if)#ip add 102.14.239.7 255.255.255.240
+Router(config-if)#no sh
+
+%LINK-5-CHANGED: Interface Serial2/0, changed state to down
+Router(config-if)#exit
+Router(config)#
+%LINK-5-CHANGED: Interface Serial2/0, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface Serial2/0, changed state to up
+
+-	Config Router Malang
+
+Router>ena
+Router#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#inter se 3/0
+Router(config-if)#ip add 102.14.239.10 255.255.255.240
+Router(config-if)#no sh
+
+Router(config-if)#
+%LINK-5-CHANGED: Interface Serial3/0, changed state to up
+
+Router(config-if)#
+%LINEPROTO-5-UPDOWN: Line protocol on Interface Serial3/0, changed state to up
+
+Router(config-if)#exit
+Router(config)#inter se 2/0
+Router(config-if)#ip add 139.86.54.3 255.255.255.248
+Router(config-if)#no sh
+
+%LINK-5-CHANGED: Interface Serial2/0, changed state to down
+Router(config-if)#exit
+Router(config)#
+
+-	Config Router Bandung
+
+Router>ena 
+Router#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#inter se 3/0
+Router(config-if)#ip add 139.86.54.2 255.255.255.248
+Router(config-if)#no sh
+
+Router(config-if)#
+%LINK-5-CHANGED: Interface Serial3/0, changed state to up
+
+Router(config-if)#exit
+Router(config)#
+%LINEPROTO-5-UPDOWN: Line protocol on Interface Serial3/0, changed state to up
+
+Router(config)#inter se 2/0
+Router(config-if)#ip add 100.91.67.15 255.255.255.224
+Router(config-if)#no sh
+
+%LINK-5-CHANGED: Interface Serial2/0, changed state to down
+Router(config-if)#
+Router(config-if)#exit
+Router(config)#
+%LINK-5-CHANGED: Interface Serial2/0, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface Serial2/0, changed state to up
+
+-	Config Router Anggrek
+
+Router>ena
+Router#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#inter se 3/0
+Router(config-if)#ip add 100.91.67.25 255.255.255.224
+Router(config-if)#no sh
+
+Router(config-if)#
+%LINK-5-CHANGED: Interface Serial3/0, changed state to up
+
+Router(config-if)#exit
+Router(config)#
+%LINEPROTO-5-UPDOWN: Line protocol on Interface Serial3/0, changed state to up
+
+Router(config)#end
+Router#
+%SYS-5-CONFIG_I: Configured from console by console
+
+Router#
+
+-	Config Router Kemanggisan to Switch
+
+Router>ena
+Router#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#inter fa 0/0
+Router(config-if)#ip add 172.16.35.1 255.255.255.128
+Router(config-if)#no sh
+
+Router(config-if)#
+%LINK-5-CHANGED: Interface FastEthernet0/0, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/0, changed state to up
+
+Router(config-if)#
+Router#
+%SYS-5-CONFIG_I: Configured from console by console
+
+-	Config Router Malang to Switch
+
+Router>ena
+Router#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#inter fa 0/0
+Router(config-if)#ip add 192.168.99.1 255.255.255.192
+Router(config-if)#no sh
+
+Router(config-if)#
+%LINK-5-CHANGED: Interface FastEthernet0/0, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/0, changed state to up
+
+Router(config-if)#
+
+-	Config Router Bandung to Switch
+
+Router>ena
+Router#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#inter fa 0/0
+Router(config-if)#ip add 10.10.189.1 255.255.255.0
+Router(config-if)#no sh
+
+Router(config-if)#
+%LINK-5-CHANGED: Interface FastEthernet0/0, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/0, changed state to up
+
+Router(config-if)#exit
+Router(config)#
+
+-	Config Router Anggrek to Switch
+
+Router>ena
+Router#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#inter fa 0/0
+Router(config-if)#ip add 5.5.5.1 255.255.255.252
+Router(config-if)#no sh
+
+Router(config-if)#
+%LINK-5-CHANGED: Interface FastEthernet0/0, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/0, changed state to up
+
+Router(config-if)#exit
+Router(config)#
+
+-	Config IP Route
+
+KEMANGGISAN(config)#ip route 192.168.99.0 255.255.255.192 102.14.239.10
+KEMANGGISAN(config)#ip route 10.10.189.0 255.255.255.0 102.14.239.10
+KEMANGGISAN(config)#ip route 5.5.5.0 255.255.255.252 102.14.239.10
+KEMANGGISAN(config)#ip route 100.91.67.0 255.255.255.224 102.14.239.10
+KEMANGGISAN(config)#ip route 139.86.54.0 255.255.255.248 102.14.239.10
+
+
+MALANG(config)#ip route 100.91.67.0 255.255.255.224 139.86.54.2
+MALANG(config)#ip route 172.16.35.0 255.255.255.128 102.14.239.7
+MALANG(config)#ip route 10.10.189.0 255.255.255.0 139.86.54.2
+MALANG(config)#ip route 5.5.5.0 255.255.255.252 139.86.54.2
+
+
+BANDUNG(config)#ip route 102.14.239.0 255.255.255.240 102.14.239.10
+BANDUNG(config)#ip route 192.168.99.0 255.255.255.192 139.86.54.3
+BANDUNG(config)#ip route 172.16.35.0 255.255.255.128 139.86.54.3
+BANDUNG(config)#ip route 5.5.5.0 255.255.255.252 100.91.67.25
+
+
+ANGGREK(config)#ip route 139.86.54.0 255.255.255.248 139.86.54.2
+ANGGREK(config)#ip route 139.86.54.0 255.255.255.248 100.91.67.15
+ANGGREK(config)#ip route 172.16.35.0 255.255.255.128 100.91.67.15
+ANGGREK(config)#ip route 10.10.189.0 255.255.255.0 100.91.67.15
+ANGGREK(config)#ip route 192.168.99.0 255.255.255.192 100.91.67.15

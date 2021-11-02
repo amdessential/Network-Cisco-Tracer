@@ -1,0 +1,211 @@
+Malang>ena 
+Malang#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Malang(config)#inter fa0/0
+Malang(config-if)#ip add 10.172.192.0 255.255.255.240
+Bad mask /28 for address 10.172.192.0
+Malang(config-if)#no sh
+
+Malang(config-if)#
+%LINK-5-CHANGED: Interface FastEthernet0/0, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/0, changed state to up
+
+Malang(config-if)#exit
+Malang(config)#inter se2/0
+Malang(config-if)#ip add 159.100.198.25 255.255.255.240
+Malang(config-if)#no sh
+
+%LINK-5-CHANGED: Interface Serial2/0, changed state to down
+Malang(config-if)#
+Malang(config-if)#exit
+Malang(config)#exit
+Malang(config)#inter se 3/0
+Malang(config-if)#ip add 167.145.94.29 255.255.255.240
+Malang(config-if)#no sh
+
+Malang(config-if)#
+%LINK-5-CHANGED: Interface Serial3/0, changed state to up
+
+Malang(config-if)#exit
+Malang(config)#
+%LINEPROTO-5-UPDOWN: Line protocol on Interface Serial3/0, changed state to up
+Malang#
+%SYS-5-CONFIG_I: Configured from console by console
+
+Malang#
+Malang#sh ip inter br
+Interface              IP-Address      OK? Method Status                Protocol 
+FastEthernet0/0        10.172.192.1    YES manual up                    up 
+FastEthernet1/0        unassigned      YES unset  administratively down down 
+Serial2/0              159.100.198.25  YES manual up                    up 
+Serial3/0              167.145.94.29   YES manual up                    up 
+FastEthernet4/0        unassigned      YES unset  administratively down down 
+FastEthernet5/0        unassigned      YES unset  administratively down down
+Malang#
+Malang(config)#router rip
+Malang(config-router)#version 2
+Malang(config-router)#network 159.100.198.0
+Malang(config-router)#network 167.145.94.0
+Malang(config-router)#network 10.172.192.0
+Malang(config-router)#no auto-summary
+Malang(config-router)#exit
+Malang(config)#do sh ip route
+Codes: C - connected, S - static, I - IGRP, R - RIP, M - mobile, B - BGP
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2, E - EGP
+       i - IS-IS, L1 - IS-IS level-1, L2 - IS-IS level-2, ia - IS-IS inter area
+       * - candidate default, U - per-user static route, o - ODR
+       P - periodic downloaded static route
+
+Gateway of last resort is not set
+
+     10.0.0.0/28 is subnetted, 1 subnets
+C       10.172.192.0 is directly connected, FastEthernet0/0
+     159.100.0.0/28 is subnetted, 1 subnets
+C       159.100.198.16 is directly connected, Serial2/0
+     167.145.0.0/28 is subnetted, 1 subnets
+C       167.145.94.16 is directly connected, Serial3/0
+R    200.182.93.0/24 [120/1] via 167.145.94.17, 00:01:11, Serial3/0
+
+Malang(config)#
+
+
+Jogja>ena
+Jogja#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Jogja(config)#inter fa0/0
+Jogja(config-if)#ip add 192.168.100.1 255.255.255.240
+Jogja(config-if)#no sh
+
+Jogja(config-if)#
+%LINK-5-CHANGED: Interface FastEthernet0/0, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/0, changed state to up
+
+Jogja(config-if)#exit
+Jogja(config)#inter se3/0
+Jogja(config-if)#ip add 159.100.198.18 255.255.255.240
+Jogja(config-if)#no sh
+
+Jogja(config-if)#
+%LINK-5-CHANGED: Interface Serial3/0, changed state to up
+
+Jogja(config-if)#exit
+Jogja(config)#
+%LINEPROTO-5-UPDOWN: Line protocol on Interface Serial3/0, changed state to up
+
+Jogja(config)#inter se2/0
+Jogja(config-if)#ip add 98.167.53.37 255.255.255.240
+Jogja(config-if)#no sh
+
+%LINK-5-CHANGED: Interface Serial2/0, changed state to down
+Jogja(config-if)#
+Jogja(config-if)#exit
+Jogja(config)#
+Jogja(config)#exit
+Jogja#
+%SYS-5-CONFIG_I: Configured from console by console
+
+Jogja#
+Jogja#sh ip inter br
+Interface              IP-Address      OK? Method Status                Protocol 
+FastEthernet0/0        192.168.100.1   YES manual up                    up 
+FastEthernet1/0        unassigned      YES unset  administratively down down 
+Serial2/0              98.167.53.37    YES manual up                    up 
+Serial3/0              159.100.198.18  YES manual up                    up 
+FastEthernet4/0        unassigned      YES unset  administratively down down 
+FastEthernet5/0        unassigned      YES unset  administratively down down
+Jogja#
+
+
+Jakarta>ena
+Jakarta#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Jakarta(config)#inter fa0/0
+Jakarta(config-if)#ip add 172.16.39.1 255.255.255.240
+Jakarta(config-if)#no sh
+
+Jakarta(config-if)#
+%LINK-5-CHANGED: Interface FastEthernet0/0, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/0, changed state to up
+
+Jakarta(config-if)#exit
+Jakarta(config)#inter se3/0
+Jakarta(config-if)#ip add 98.167.53.40 255.255.255.240
+Jakarta(config-if)#no sh
+
+Jakarta(config-if)#
+%LINK-5-CHANGED: Interface Serial3/0, changed state to up
+
+Jakarta(config-if)#exit
+Jakarta(config)#
+%LINEPROTO-5-UPDOWN: Line protocol on Interface Serial3/0, changed state to up
+
+Jakarta(config)#inter se2/0
+Jakarta(config-if)#ip add 200.182.93.36 255.255.255.240
+Jakarta(config-if)#no sh
+
+%LINK-5-CHANGED: Interface Serial2/0, changed state to down
+Jakarta(config-if)#exit
+Jakarta(config)#
+Jakarta(config)#
+Jakarta#sh ip inter br
+Interface              IP-Address      OK? Method Status                Protocol 
+FastEthernet0/0        172.16.39.1     YES manual up                    up 
+FastEthernet1/0        unassigned      YES unset  administratively down down 
+Serial2/0              200.182.93.36   YES manual up                    up 
+Serial3/0              98.167.53.40    YES manual up                    up 
+FastEthernet4/0        unassigned      YES unset  administratively down down 
+FastEthernet5/0        unassigned      YES unset  administratively down down
+Jakarta#
+
+
+Aceh>ena
+Aceh#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Aceh(config)#inter fa 0/0
+Aceh(config-if)#ip add 10.10.1.1 255.255.255.240
+Aceh(config-if)#no sh
+
+Aceh(config-if)#
+%LINK-5-CHANGED: Interface FastEthernet0/0, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/0, changed state to up
+
+Aceh(config-if)#exit
+Aceh(config)#inter se 3/0
+Aceh(config-if)#ip add 200.182.93.45 255.255.255.240
+Aceh(config-if)#no sh
+
+Aceh(config-if)#
+%LINK-5-CHANGED: Interface Serial3/0, changed state to up
+
+Aceh(config-if)#exit
+Aceh(config)#inter se 2/0
+Aceh(config-if)#
+%LINEPROTO-5-UPDOWN: Line protocol on Interface Serial3/0, changed state to up
+
+Aceh(config-if)#ip add 167.145.94.17 255.255.255.240
+Aceh(config-if)#no sh
+
+%LINK-5-CHANGED: Interface Serial2/0, changed state to down
+Aceh(config-if)#
+Aceh(config-if)#exit
+Aceh(config)#exit
+Aceh#
+%SYS-5-CONFIG_I: Configured from console by console
+
+Aceh#
+Aceh#sh ip inter br
+Interface              IP-Address      OK? Method Status                Protocol 
+FastEthernet0/0        10.10.1.1       YES manual up                    up 
+FastEthernet1/0        unassigned      YES unset  administratively down down 
+Serial2/0              167.145.94.17   YES manual up                    up 
+Serial3/0              200.182.93.45   YES manual up                    up 
+FastEthernet4/0        unassigned      YES unset  administratively down down 
+FastEthernet5/0        unassigned      YES unset  administratively down down
+Aceh#
+
